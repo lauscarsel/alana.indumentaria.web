@@ -1,0 +1,1 @@
+$.fn.formObject=function(){const e={};return $.each($(this).serializeArray(),((n,r)=>{e[r.name]=r.value||""})),e};

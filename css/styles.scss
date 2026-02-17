@@ -1,0 +1,418 @@
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+html,body{
+  height: 100%;
+}
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+.video-container{
+    height:100% ;
+    width:100%;
+    overflow:hidden;
+    position:absolute;
+
+    video{
+      //toda la pantalla
+      min-width:100%;
+      min-height:100%;
+
+      width: auto;
+      height: auto;
+      //centrar video
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%,-50%);
+      transform: translate(-50%,-50%);
+
+    }
+}
+//modificar color y giladas al menu
+.navigation{
+  li{
+    @extend.medium;
+    padding: 5px 10 px;
+    transition: all 0.5s;
+    &:hover{
+      background-color: rgba(0, 0, 0,0.5);
+    }
+    a{
+      color:black;
+      cursor:pointer;
+      &:hover{
+        text-decoration:none ;
+      }
+    }
+  }
+}
+
+#description{
+  ul{
+    margin:0px;
+  }
+  &.absolute{
+    bottom:0px;
+  }
+  &.fixed{
+    top:0px;
+  }
+
+}
+.clothes{
+  height:300px;
+  background-size: cover;
+  background-position: center;
+  padding:0px;
+  overflow: hidden;
+  position: relative;
+
+  &:hover{
+    .screen{
+      top:0%;
+    }
+  }
+  .screen{
+    top:-100%;
+    position: absolute; 
+    background-color:rgba(0, 0, 0, 0.8);
+    height:100%;
+    width:100%;
+    transition: top 0.8s;
+  }
+}
+#menu-title{
+  width: 300px;
+  z-index:5;
+  top:50%;
+  left:calc(50% - 150px);
+  top:calc(50% - 2.5em);
+}
+#gallery{
+  width:100%;
+  overflow-x:hidden ;
+  .inner{
+    white-space:nowrap;
+    position: relative;
+    left:0%;
+    transition:left 1.5s;
+  }
+  .image{
+    display:inline-block;
+    margin-right:-4px;
+    height:400px;
+    width:100%;
+    background-size: contain;
+    background-position: center;
+  }
+}
+.container{
+  .card{
+    margin-top: -200px;
+    padding:2em;
+
+    }
+  }
+.path-step {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background:#a2a2a2;
+  display: inline-block;
+  margin-top: 2em;
+  opacity:0.4;
+  transition: all 0.4s ;
+  cursor: pointer;
+  &:hover{
+    box-shadow: 0px 0px 5px rgba(250,250,250,0.8);
+  }
+  &.active{
+    opacity:1;
+    background-color:white ;
+    box-shadow: 0px 0px 5px rgba(250,250,250,0.8);
+
+}}
+.step-form{
+  .step{
+    max-height: 0px;
+    overflow: hidden;
+    transition: all 1s;
+    padding: 1em 0.5em;
+    margin: 0px;
+    &.active{
+      max-height: 150px;
+    }
+    input, textarea{
+      font-size:2em;
+      padding:0.5em;
+      border:none;
+      outline:none;
+      border-bottom:solid 1px #eee;
+      background-color:transparent;
+      width:100%;
+      color: white;
+}
+  }
+}
+#contact{
+  margin-top: -200px;
+}
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+.card{
+  box-shadow: 0px 0px 10px rgba(0,0,0.5);
+  margin-bottom:400px;
+}
+
+.black{
+  background-color: #222;
+}
+.white{
+  background-color: white;
+}
+.white-text{
+    color:white;
+    text-align:center;
+}
+.black-text{
+  color:black;
+}
+.dancing-script{
+  font-family: "Dancing Script", cursive;
+}
+.slim{
+  font-weight:200;
+}
+.title{
+  font-size: 4em;
+}
+.subtitle{
+  font-size:2.5em;
+}
+.medium{
+  font-size: 1.5em;
+}
+.large-padding{
+  padding: 10px 15px;
+}
+.absolute{
+  position: absolute;
+}
+.fixed{
+  position: fixed;
+}
+.relative{
+  position:relative;
+}
+.bottom{
+  bottom: 0px;
+}
+.top{
+  top: 3em;
+}
+.right{
+  right:5em ;
+}
+.up{
+  z-index:2;
+  position: relative;
+}
+.full-height{
+  height: 100%;
+}
+.full-width{
+  width: 100%;
+}
+.row{
+  margin: 0;
+}
+.no-margin{
+  margin:0px;
+}
+.hidden{
+  display: none;
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+
+}
+.visually-hidden.focusable:active,
+.visually-hidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  white-space: inherit;
+  width: auto;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: table;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   https://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    /* Black prints faster */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+   * Don't show links that are fragment identifiers,
+   * or use the `javascript:` pseudo protocol
+   */
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
