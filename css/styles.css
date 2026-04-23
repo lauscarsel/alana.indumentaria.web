@@ -5,7 +5,7 @@ html {
 }
 
 html, body {
-  height: 100%;
+  height: 100dvh;
 }
 
 ::-moz-selection {
@@ -82,22 +82,43 @@ textarea {
           transform: translate(-50%, -50%);
 }
 
-.navigation li {
-  padding: 5px 10px;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-.navigation li:hover {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.navigation li a {
-  color: white;
-  cursor: pointer;
-}
-.navigation li a:hover {
-  text-decoration: none;
+.logo {
+  margin-top: 100px;
 }
 
+#menu-opener {
+  display: none;
+  cursor: pointer;
+}
+
+.navigation ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  #menu-opener {
+    display: block;
+  }
+  .navigation ul {
+    display: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background: #222;
+    width: 200px;
+  }
+  .navigation ul.active {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+  }
+}
 #description {
   position: fixed;
   top: 0;
@@ -110,8 +131,8 @@ textarea {
   color: white;
 }
 
-#home .box {
-  padding-top: 40px;
+#home.box {
+  padding-top: 140px;
 }
 
 .clothes {
@@ -123,7 +144,7 @@ textarea {
   position: relative;
 }
 .clothes:hover .screen {
-  top: 0%;
+  top: 0;
 }
 .clothes .screen {
   top: -100%;
@@ -131,8 +152,8 @@ textarea {
   background-color: rgba(0, 0, 0, 0.8);
   height: 100%;
   width: 100%;
-  -webkit-transition: top 0.8s;
-  transition: top 0.8s;
+  -webkit-transition: top 1.5s;
+  transition: top 1.5s;
 }
 
 #menu-link {
@@ -140,7 +161,7 @@ textarea {
 }
 
 #menu-title {
-  position: sticky;
+  position: static;
   top: 0;
   z-index: 10;
 }
@@ -170,7 +191,7 @@ textarea {
 }
 
 .container .card {
-  margin-top: 50px;
+  margin-top: 800px;
   padding: 2em;
 }
 
@@ -222,42 +243,21 @@ textarea {
   display: none !important;
 }
 
-.steps-container {
+#contact.box {
+  max-width: 50px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.contact-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  gap: 12px;
-  height: 100%;
-}
-
-.path-step {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #777;
-  opacity: 0.5;
-}
-
-.path-step.active {
-  background: white;
-  opacity: 1;
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
-}
-
-#contact .box {
-  max-width: 500px;
-  margin: 0 auto;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  gap: 60 px;
+  margin-bottom: 20px;
 }
 
 #location {
@@ -268,19 +268,14 @@ textarea {
 #map {
   width: 100%;
   height: 100%;
-}
-
-#menu-opener {
-  display: none;
+  margin-top: 100 px;
 }
 
 /* ==========================================================================
    Helper classes
    ========================================================================== */
 .card {
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  margin-bottom: 400px;
+  margin-bottom: 20px;
 }
 
 .black {
@@ -316,12 +311,12 @@ textarea {
   font-size: 2.5em;
 }
 
-.medium, .navigation li {
+.medium {
   font-size: 1.5em;
 }
 
 .large-padding {
-  padding: 10px 15px;
+  padding: 5px 5px;
 }
 
 .absolute {

@@ -6,7 +6,7 @@ html {
 }
 
 html,body{
-  height: 100%;
+  height: 100dvh;
 }
 
 ::-moz-selection {
@@ -89,29 +89,44 @@ textarea {
     transform: translate(-50%, -50%);
   }
 }
-
 // navegación
-.navigation {
-  li {
-    @extend .medium;
-    padding: 5px 10px; // 🔥 FIX espacio mal
-    transition: all 0.5s;
 
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    a {
-      color: white;
-      cursor: pointer;
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
-  }
+//logo
+.logo{
+  margin-top: 100px;
 }
+//menu hamburguesa
+#menu-opener {
+  display: none;
+  //clase del puntero
+  cursor: pointer;
+}
+.navigation ul {
+  display: flex;
+ } 
+//MOBILE
+@media(max-width: 768px){
+  #menu-opener{
+    display: block;
+  }
 
+  .navigation ul{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background: #222;
+    width: 200px;
+  }
+  .navigation ul.active{
+    display: flex !important;
+  }
+
+
+
+}
+//banda negra en la parte superio pantalla, junto al menu
 #description {
   position: fixed;
   top: 0;
@@ -122,10 +137,13 @@ textarea {
   height: auto;
   min-height: 20px;
   color: white;
+}//caja del home
+
+//"links de prendas de ropa"
+#home.box{
+  padding-top: 140px;
 }
-#home .box{
-  padding-top: 40px;
-}
+//recuadors de ropa con movimiento
 .clothes {
   height: 300px;
   background-size: cover;
@@ -136,24 +154,24 @@ textarea {
 
   &:hover {
     .screen {
-      top: 0%;
+      top: 0;
     }
   }
-
+//movimineto de mouse
   .screen {
     top: -100%;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.8);
     height: 100%;
     width: 100%;
-    transition: top 0.8s;
+    transition: top 1.5s;
   }
 }
 #menu-link{
   z-index: 1000;
-}
+}//cartel productos
 #menu-title {
- position: sticky;
+ position: static;
   top: 0;
   z-index: 10;
 }
@@ -181,7 +199,7 @@ textarea {
 
 .container {
   .card {
-    margin-top: 50px;
+    margin-top: 800px;
     padding: 2em;
   }
 }
@@ -226,31 +244,18 @@ textarea {
 .hidden {
   display: none !important;
 }
-.steps-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  height: 100%;
-}
+// posicion de puntitos 
 
-.path-step {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #777;
-  opacity: 0.5;
-}
-
-.path-step.active {
-  background: white;
-  opacity: 1;
-  transform: scale(1.2);
-}
-#contact .box {
-  max-width: 500px;
+#contact.box{
+  max-width: 50px;
   margin: 0 auto;
+  padding: 60px 20px;
+}
+.contact-item{
+  display: flex;
+  align-items:left;
+  gap: 60 px;
+  margin-bottom: 20px;
 }
 
 #location {
@@ -261,19 +266,16 @@ textarea {
 #map {
   width: 100%;
   height: 100%;
+  margin-top: 100 px;
 }
 
-#menu-opener {
-  display: none;
-}
 
 /* ==========================================================================
    Helper classes
    ========================================================================== */
 
 .card {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); // 🔥 FIX rgba mal
-  margin-bottom: 400px;
+  margin-bottom:20px;
 }
 
 .black {
@@ -314,7 +316,7 @@ textarea {
 }
 
 .large-padding {
-  padding: 10px 15px;
+  padding: 5px 5px;
 }
 
 .absolute {
