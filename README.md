@@ -66,17 +66,6 @@ alana.indumentaria.web/
 
 ---
 
-## 🚀 Cómo usar
-
-1. Cloná el repositorio:
-   ```bash
-   git clone https://github.com/tu-usuario/alana.indumentaria.web.git
-   ```
-
-2. Abrí el archivo `index.html` directamente en tu navegador — no requiere servidor ni instalación.
-
----
-
 ## 🛠️ Tecnologías utilizadas
 
 | Tecnología | Uso |
@@ -95,11 +84,6 @@ alana.indumentaria.web/
 
 Todos los productos y la galería están centralizados en **`assets/js/data.js`**.  
 Para agregar un producto nuevo, simplemente editá ese archivo — no es necesario tocar el HTML.
-
-```js
-// Ejemplo: agregar un producto a la sección "Remeras"
-{ title: 'Nueva Remera', image: 'assets/img/nueva-remera.jpg', price: '$8.000' }
-```
 
 ---
 
