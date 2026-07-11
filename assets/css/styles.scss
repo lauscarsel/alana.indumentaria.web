@@ -1,0 +1,804 @@
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+html,
+body {
+  height: 100dvh;
+}
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.video-container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  z-index: 0;
+
+  video {
+    min-width: 100%;
+    min-height: 100%;
+
+    width: auto;
+    height: auto;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+// navegación
+
+//logo
+.logo {
+  margin-top: 100px;
+}
+
+#hamburguesa {
+  display: none;
+  //clase del puntero
+  cursor: pointer;
+}
+
+.navigation ul {
+  display: flex;
+}
+
+//MOBILE
+@media(max-width: 768px) {
+  #menu-opener {
+    display: block;
+  }
+
+  .navigation ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background: #222;
+    width: 200px;
+  }
+
+  .navigation ul.active {
+    display: flex !important;
+  }
+
+
+
+}
+
+//banda negra en la parte superio pantalla, junto al menu
+#description {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 5px 10px;
+  font-size: 1.2em;
+  height: auto;
+  min-height: 20px;
+  color: white;
+}
+
+.search-wrapper {
+  display: flex;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  max-width: 400px;
+  margin: 0 auto;
+
+  input {
+    flex: 1;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    color: #666;
+    outline: none;
+
+    &::placeholder {
+      color: #999;
+    }
+  }
+
+  button {
+    background: #f0f0f0;
+    border: none;
+    border-left: 1px solid #ddd;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+
+    &:hover {
+      background: #e0e0e0;
+    }
+
+    i {
+      font-size: 1.1em;
+    }
+  }
+}
+
+.hide-on-mobile {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+//caja del home
+
+//"links de prendas de ropa"
+#home.box {
+  padding-top: 140px;
+}
+
+// Tarjetas de productos estilo tienda
+.product-card {
+  background-color: #fff;
+  margin-bottom: 30px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  .product-image {
+    width: 100%;
+    padding-bottom: 125%; /* Relación de aspecto 4:5 típica de moda */
+    background-size: cover;
+    background-position: center;
+    background-color: #f5f5f5;
+  }
+
+  .product-info {
+    padding: 15px 10px;
+
+    h3 {
+      font-size: 1.1em;
+      color: #333;
+      margin: 0 0 10px 0;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .price {
+      font-size: 1.2em;
+      color: #000;
+      font-weight: 700;
+      margin: 0;
+    }
+  }
+}
+
+#menu-link {
+  z-index: 1000;
+}
+
+//cartel productos
+
+#titulo {
+  position: static;
+  top: 0;
+  z-index: 10;
+}
+
+#gallery {
+  padding: 20px 0; /* Sin padding lateral para que el carrusel llegue a los bordes */
+  width: 100%;
+  overflow: hidden;
+  position: relative; /* Para las flechas flotantes */
+
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    color: #222;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.3s, transform 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 1);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    &.prev {
+      left: 10px;
+    }
+
+    &.next {
+      right: 10px;
+    }
+  }
+
+  .inner {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+    padding: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* Suavidad en iOS */
+    
+    /* Ocultar barra de desplazamiento */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome/Safari/Edge */
+    }
+  }
+
+  .image {
+    flex: 0 0 auto;
+    width: 250px;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    scroll-snap-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .image:hover {
+    transform: scale(1.03);
+  }
+}
+
+.container {
+  .card {
+    margin-top: 800px;
+    padding: 2em;
+  }
+}
+
+/* Modal de Producto */
+#product-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+
+  .modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+  }
+
+  .modal-content {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 2em;
+      color: #999;
+      cursor: pointer;
+      z-index: 10;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #222;
+      }
+    }
+
+    .modal-body {
+      display: flex;
+      flex-direction: column;
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+      }
+    }
+
+    .modal-image-container {
+      flex: 1;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 100%;
+        max-height: 50vh;
+        object-fit: cover;
+      }
+    }
+
+    .modal-info {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      h3 {
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+
+      p {
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 30px;
+      }
+
+      .btn {
+        padding: 15px 30px;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 4px;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.2s;
+        display: inline-block;
+
+        &:hover {
+          background-color: #444;
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+.producto-seccion {
+  display: none;
+}
+
+.volver {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #222;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: background-color 0.3s;
+}
+
+.volver:hover {
+  background-color: #555;
+}
+
+// posicion de puntitos 
+
+/* Footer Contacto */
+.footer#contact {
+  padding: 60px 20px 40px;
+  margin-top: 50px;
+
+  .subtitle {
+    margin-bottom: 40px;
+  }
+}
+
+.contact-list {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-info-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  @media (min-width: 768px) {
+    align-items: flex-start;
+    padding-left: 10%;
+  }
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: max-content;
+  gap: 15px;
+  margin-bottom: 30px;
+
+  i {
+    font-size: 1.5em;
+  }
+
+  p, a {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: 300;
+  }
+
+  .social-link {
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #999;
+    }
+  }
+}
+
+#map-container {
+  width: 100%;
+  height: 250px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(255,255,255,0.1);
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+    height: 250px;
+  }
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Para que el mapa de leaflet no se ponga sobre modales */
+}
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.card {
+  margin-bottom: 20px;
+}
+
+.black {
+  background-color: #222;
+}
+
+.white {
+  background-color: white;
+}
+
+.white-text {
+  color: white;
+  text-align: center;
+}
+
+.black-text {
+  color: black;
+}
+
+.dancing-script {
+  font-family: "Dancing Script", cursive;
+}
+
+.slim {
+  font-weight: 200;
+}
+
+.title {
+  font-size: 4em;
+}
+
+.subtitle {
+  font-size: 2.5em;
+}
+
+.medium {
+  font-size: 1.5em;
+}
+
+.large-padding {
+  padding: 10px 10px;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.relative {
+  position: relative;
+}
+
+.bottom {
+  bottom: 0;
+}
+
+.top {
+  top: 3em;
+}
+
+.right {
+  right: 5em;
+}
+
+.up {
+  z-index: 2;
+  position: relative;
+}
+
+.full-height {
+  min-height: 100vh;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.row {
+  margin: 0;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.full-page {
+  min-height: 100vh;
+  padding: 100px 40px;
+  scroll-margin-top: 80px;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+@media only screen and (max-height: 600px) {
+
+  #menu-title,
+  .medium,
+  .navigation li {
+    margin-top: -15%;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+
+  #menu-opener {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    font-size: 2em;
+    color: red;
+    cursor: pointer;
+  }
+
+  .path-step {
+    display: inline-block;
+    margin-right: 1em;
+  }
+
+  #navigation ul {
+    display: none !important;
+  }
+
+  #responsive-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: #222;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s;
+
+    li {
+      display: block;
+      margin: 20px 0;
+
+      a {
+        color: white;
+        font-size: 2em;
+      }
+    }
+  }
+
+  #responsive-nav.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #responsive-nav {
+    top: 95px;
+  }
+}
+
+;
+@media print,
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   https://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    /* Black prints faster */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+   * Don't show links that are fragment identifiers,
+   * or use the `javascript:` pseudo protocol
+   */
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}

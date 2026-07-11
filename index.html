@@ -1,0 +1,263 @@
+<html class="no-js" lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Alana Indumentaria</title>
+    <meta content="Viste diferente, vestite bien" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="45" data-name="image-counter">
+    <link href="assets/css/normalize.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&amp;display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/flexboxgrid/6.3.1/flexboxgrid.min.css" rel="stylesheet">
+    <link href="assets/css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- BANNER DE BIENVENIDA / ANUNCIOS -->
+    <div class="announcement-bar">
+        <div class="announcement-slider">
+            <div class="announcement-slide active">✨ ¡NUEVA COLECCIÓN DE TEMPORADA! ✨</div>
+            <div class="announcement-slide">🚚 ¡ENVIOS A TODO EL PAÍS! 🚚</div>
+            <div class="announcement-slide">💬 COMPRA POR WHATSAPP O MERCADO PAGO 💬</div>
+        </div>
+    </div>
+
+    <div class="video-container main-content">
+        <video autoplay height="720" loop muted width="1280" id="hero-video" preload="none">
+            <source data-src="assets/video/ropa2.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="row full-height middle-xs center-xs relative up main-content" id="home">
+        <div class="col-xs-12">
+            <div class="box white-text">
+                <img class="logo" src="assets/img/logo/LogoNuevo.png">
+                <h1 class="dancing-script title no-margin">Alana Indumentaria</h1>
+
+            </div>
+        </div>
+        <nav class="fixed" id="navigation">
+        </nav>
+        <div class="absolute black large-padding white-text full-width" id="description">
+            <div class="row middle-xs center-xs">
+                <div class="col-xs-12 col-sm-4 white-text large hide-on-mobile dancing-script">
+                    Vestite bien con nosotros
+                </div>
+                <div class="col-xs-10 col-sm-4">
+                    <div class="search-wrapper">
+                        <input id="product-search" placeholder="¿Qué estás buscando?" type="text">
+                        <button id="search-btn" type="button">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-xs-2 col-sm-4 text-right">
+                    <div class="box">
+                        <nav class="text-right navigation" id="sticky-nav">
+                            <i class="bi bi-list white-text subtitle" id="menu-opener"></i>
+                            <ul class="list-inline">
+                                <li>
+                                    <a class="white-text" href="javascript:void(0)" id="cart-icon">
+                                        <i class="bi bi-cart"></i>
+                                        <span id="cart-count">0</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="menu-link white-text" href="#home">Home</a>
+                                </li>
+                                <li>
+                                    <a class="menu-link white-text" href="#menu">Productos</a>
+                                </li>
+                                <li>
+                                    <a class="menu-link white-text" href="#gallery">Galeria</a>
+                                </li>
+                                <li>
+                                    <a class="menu-link white-text" href="#contact">Contacto</a>
+                                </li>
+                                <li>
+                                    <a class="menu-link white-text" href="#map-container">Como llegar</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center relative main-content reveal" id="menu">
+        <div class="white" id="menu-title">
+            <h2 class="dancing-script title">Productos</h2>
+        </div>
+
+        <!-- Etiquetas de Género -->
+        <div class="row center-xs gender-tags-container">
+            <a class="category-link gender-tag" href="#seccion-mujer">MUJER</a>
+            <a class="category-link gender-tag" href="#seccion-hombre">HOMBRE</a>
+        </div>
+
+        <!-- Filtros Rápidos de Catálogo -->
+        <div class="row center-xs catalog-tags-container">
+            <button class="catalog-tag active" data-filter="all">TODOS</button>
+            <button class="catalog-tag" data-filter="nuevo">NOVEDADES</button>
+            <button class="catalog-tag" data-filter="oferta">OFERTAS</button>
+            <button class="catalog-tag" data-filter="destacado">DESTACADOS</button>
+        </div>
+
+        <!-- Grilla Original de Productos -->
+        <div class="row" id="categories-grid">
+            <!-- Cargado dinámicamente -->
+        </div>
+    </div>
+
+    <!-- SECCION MUJER -->
+    <div class="producto-seccion reveal" id="seccion-mujer">
+        <div class="row center-xs large-padding">
+            <button class="volver btn">Volver a Productos</button>
+        </div>
+        <h2 class="dancing-script title">Mujer</h2>
+        <div class="row">
+            <!-- Cargado dinámicamente -->
+        </div>
+    </div>
+
+    <!-- SECCION HOMBRE -->
+    <div class="producto-seccion reveal" id="seccion-hombre">
+        <div class="row center-xs large-padding">
+            <button class="volver btn">Volver a Productos</button>
+        </div>
+        <h2 class="dancing-script title">Hombre</h2>
+        <div class="row">
+            <!-- Cargado dinámicamente -->
+        </div>
+    </div>
+    <div class="producto-seccion" id="search-results">
+        <div class="row center-xs large-padding">
+            <button class="volver btn">Volver a Productos</button>
+        </div>
+        <h2 class="dancing-script title">Resultados de búsqueda</h2>
+        <div class="row" id="search-results-container">
+            <!-- Aquí se mostrarán los productos filtrados -->
+        </div>
+        <div class="no-results hidden">
+            <p class="medium">No se encontraron productos que coincidan con tu búsqueda.</p>
+        </div>
+    </div>
+    <div class="main-content" id="carrito"></div>
+    <div class="main-content relative reveal" id="gallery">
+        <button class="carousel-arrow prev" id="prev-gallery">
+            <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="carousel-arrow next" id="next-gallery">
+            <i class="bi bi-chevron-right"></i>
+        </button>
+        <div class="inner">
+            <!-- Cargado dinámicamente -->
+        </div>
+    </div>
+    </div>
+    <div id="product-sections-container">
+        <!-- Todas las secciones de productos se cargarán aquí dinámicamente -->
+    </div>
+    <div class="container main-content">
+        <div class="white-text black-text text-center relative">
+            <h3 class="medium slim">
+                ALANA INDUMENTARIA
+                <strong class="dancing-script medium">VISTE DIFERENTE, MARCA LA DIFERENCIA</strong>
+            </h3>
+        </div>
+    </div>
+
+    <!-- SECCION DESTACADOS (SLIDER DE PRODUCTOS DESTACADOS) -->
+    <div class="main-content reveal text-center large-padding" id="seccion-destacados-home">
+        <h2 class="dancing-script title">Productos Destacados</h2>
+        <div class="row center-xs" id="featured-products-container" style="margin: 0 10px 20px 10px;">
+            <!-- Cargado dinámicamente -->
+        </div>
+    </div>
+
+    <div class="black main-content footer reveal" id="contact">
+        <div class="row center-xs">
+            <div class="col-xs-12">
+                <h3 class="dancing-script white-text subtitle">Contactanos</h3>
+            </div>
+        </div>
+        <div class="row middle-xs contact-list large-padding">
+            <div class="col-xs-12 col-sm-6 contact-info-col">
+                <div class="contact-item">
+                    <i class="bi bi-telephone white-text medium"></i>
+                    <a class="white-text medium social-link" href="https://wa.me/5492215426591"
+                        target="_blank">2215426591</a>
+                </div>
+                <div class="contact-item">
+                    <i class="bi bi-geo-alt white-text medium"></i>
+                    <p class="white-text medium">La Plata, Buenos Aires</p>
+                </div>
+                <div class="contact-item">
+                    <i class="bi bi-instagram white-text medium"></i>
+                    <a class="white-text medium social-link" href="https://instagram.com/alana.indumentaria.1"
+                        target="_blank">alana.indumentaria.1</a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div id="map-container">
+                    <div id="map"></div>
+                    <div class="text-center white-text" id="message"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden" id="product-modal">
+        <div class="modal-overlay" id="close-overlay"></div>
+        <div class="modal-content">
+            <button class="close-btn" id="close-modal">&times;</button>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img id="modal-img" src="">
+                </div>
+                <div class="modal-info">
+                    <h3 class="dancing-script subtitle">Alana Indumentaria</h3>
+                    <p class="medium">Prenda exclusiva de temporada. Excelente calidad y calce perfecto.</p>
+                    <a class="btn black white-text" href="javascript:void(0)" id="add-to-cart-btn">Añadir al Carrito</a>
+                    <a class="btn black white-text"
+                        href="https://wa.me/5492215426591?text=Hola!%20Me%20interesa%20esta%20prenda%20que%20vi%20en%20la%20galer%C3%ADa."
+                        id="buy-btn" target="_blank">Consultar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIDEBAR DEL CARRITO -->
+    <div id="cart-sidebar" class="cart-hidden">
+        <div class="cart-header">
+            <h3 class="dancing-script">Tu Carrito</h3>
+            <button id="close-cart">&times;</button>
+        </div>
+        <div id="cart-items-container">
+            <!-- Los productos se cargarán aquí dinámicamente -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-price">$0</span>
+            </div>
+            <button id="checkout-btn" class="btn black white-text full-width">Finalizar Pedido por WhatsApp</button>
+            <button id="mp-checkout-btn" class="btn blue white-text full-width" style="margin-top: 10px; background-color: #009ee3;">Pagar con Mercado Pago</button>
+        </div>
+    </div>
+
+    <!-- BOTON VOLVER ARRIBA -->
+    <button id="back-to-top" class="hidden-btn" title="Volver arriba">
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <script crossorigin="anonymous" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script src="assets/js/maps.js" defer></script>
+    <script src="assets/js/data.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/cart.js" defer></script>
+    <script src="assets/js/steps.js" defer></script>
+</body>
+
+</html>
