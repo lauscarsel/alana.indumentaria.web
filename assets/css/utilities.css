@@ -1,0 +1,91 @@
+/* ============================================================
+   UTILITIES — Clases helper, tipografía, media queries, print
+   ============================================================ */
+
+/* --- Helpers de layout --- */
+.card { margin-bottom: 20px; }
+
+.black            { background-color: #222; }
+.white            { background-color: white; }
+.white-text       { color: white; text-align: center; }
+.black-text       { color: black; }
+
+.dancing-script   { font-family: "Dancing Script", cursive; }
+.slim             { font-weight: 200; }
+
+/* --- Escala tipográfica --- */
+.title    { font-size: 4em; }
+.subtitle { font-size: 2.5em; }
+.medium   { font-size: 1.5em; }
+.large    { font-size: 2em; }
+
+/* --- Espaciado --- */
+.large-padding { padding: 10px 10px; }
+.no-margin     { margin: 0; }
+.row           { margin: 0; }
+
+/* --- Posicionamiento --- */
+.absolute { position: absolute; }
+.fixed    { position: fixed; }
+.relative { position: relative; }
+.bottom   { bottom: 0; }
+.top      { top: 3em; }
+.right    { right: 5em; }
+
+.up {
+  z-index: 2;
+  position: relative;
+}
+
+/* --- Dimensiones --- */
+.full-height { min-height: 100vh; }
+.full-width  { width: 100%; }
+
+/* --- Visibilidad --- */
+.hidden { display: none; }
+
+.full-page {
+  min-height: 100vh;
+  padding: 100px 40px;
+  scroll-margin-top: 80px;
+}
+
+/* --- Miscelánea --- */
+.container .card { margin-top: 800px; padding: 2em; }
+
+/* --- Responsive: tipografía en móvil --- */
+@media only screen and (max-width: 768px) {
+  .title    { font-size: 2.5em; }
+  .subtitle { font-size: 1.8em; }
+}
+
+@media only screen and (max-height: 600px) {
+  #menu-title,
+  .medium,
+  .navigation li {
+    margin-top: -15%;
+  }
+}
+
+/* --- Print styles --- */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a, a:visited { text-decoration: underline; }
+  a[href]::after { content: " (" attr(href) ")"; }
+  abbr[title]::after { content: " (" attr(title) ")"; }
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after { content: ""; }
+  pre { white-space: pre-wrap !important; }
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  tr, img { page-break-inside: avoid; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}

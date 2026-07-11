@@ -1,0 +1,245 @@
+/* ============================================================
+   GALLERY & MODAL — Carrusel galería y modal de producto
+   ============================================================ */
+
+/* --- Galería horizontal --- */
+#gallery {
+  padding: 20px 0;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+#gallery .carousel-arrow {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  color: #222;
+  cursor: pointer;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  -webkit-transition: background-color 0.3s, -webkit-transform 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#gallery .carousel-arrow:hover {
+  background-color: rgb(255, 255, 255);
+  -webkit-transform: translateY(-50%) scale(1.1);
+          transform: translateY(-50%) scale(1.1);
+}
+#gallery .carousel-arrow.prev { left: 10px; }
+#gallery .carousel-arrow.next { right: 10px; }
+
+#gallery .inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 15px;
+  padding: 20px;
+  overflow-x: auto;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+#gallery .inner::-webkit-scrollbar { display: none; }
+
+#gallery .image {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  width: 250px;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  scroll-snap-align: center;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+#gallery .image:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+
+/* --- Modal de producto --- */
+#product-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 3000;
+}
+#product-modal .modal-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(5px);
+  cursor: pointer;
+}
+#product-modal .modal-content {
+  position: relative;
+  z-index: 2;
+  background: #fff;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 12px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+#product-modal .modal-content .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2em;
+  color: #999;
+  cursor: pointer;
+  z-index: 10;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+#product-modal .modal-content .close-btn:hover { color: #222; }
+
+#product-modal .modal-content .modal-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+@media (min-width: 768px) {
+  #product-modal .modal-content .modal-body {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+#product-modal .modal-content .modal-image-container {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background: #f5f5f5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#product-modal .modal-content .modal-image-container img {
+  width: 100%;
+  max-height: 50vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#product-modal .modal-content .modal-info {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+#product-modal .modal-content .modal-info h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+#product-modal .modal-content .modal-info p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+#product-modal .modal-content .modal-info .btn {
+  padding: 15px 30px;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 4px;
+  font-weight: bold;
+  -webkit-transition: background-color 0.3s, -webkit-transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+#product-modal .modal-content .modal-info .btn:hover {
+  background-color: #444;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+
+/* --- Estados: oculto / revelado --- */
+.hidden {
+  display: none !important;
+}
+
+.producto-seccion {
+  display: none;
+}
+
+/* Animación de revelado al scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}

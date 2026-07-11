@@ -1,0 +1,31 @@
+/* ============================================================
+   MAIN CSS — Punto de entrada único
+   Importa todos los archivos temáticos en orden de cascada.
+   
+   Para agregar estilos nuevos, editá el archivo temático
+   correspondiente, NO este archivo.
+   ============================================================ */
+
+/* 1. Variables, reset y accesibilidad */
+@import url("base.css");
+
+/* 2. Estructura y navegación */
+@import url("layout.css");
+
+/* 3. Productos, filtros y tarjetas */
+@import url("products.css");
+
+/* 4. Carrito de compras */
+@import url("cart.css");
+
+/* 5. Galería y modal */
+@import url("gallery-modal.css");
+
+/* 6. Footer, mapa y elementos de navegación secundaria */
+@import url("footer-map.css");
+
+/* 7. Clases helper y media queries */
+@import url("utilities.css");
+
+/* 8. Tema de color (Rosa Viejo) y banner */
+@import url("theme.css");

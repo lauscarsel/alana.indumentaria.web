@@ -2,16 +2,21 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Alana Indumentaria</title>
-    <meta content="Viste diferente, vestite bien" name="description">
+    <title>Alana Indumentaria — Moda femenina y masculina en La Plata</title>
+    <meta content="Descubrí la nueva colección de Alana Indumentaria. Buzos, camperas, pantalones y más. Envíos a todo el país. Comprá por WhatsApp o Mercado Pago." name="description">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="45" data-name="image-counter">
+    <!-- Open Graph / Redes sociales -->
+    <meta property="og:title" content="Alana Indumentaria">
+    <meta property="og:description" content="Nueva colección. Envíos a todo el país.">
+    <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- CSS base propio (siempre sincrónico para evitar FOUC) -->
     <link href="assets/css/normalize.css" rel="stylesheet">
     <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/styles.css" rel="stylesheet">
-    <!-- Fuentes e iconos: non-blocking -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    <!-- Recursos externos: non-blocking para no retrasar el primer render -->
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"></noscript>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -21,8 +26,8 @@
 </head>
 
 <body>
-    <!-- BANNER DE BIENVENIDA / ANUNCIOS -->
-    <div class="announcement-bar">
+    <!-- BANNER DE ANUNCIOS (aria-live para lectores de pantalla) -->
+    <div class="announcement-bar" role="marquee" aria-live="polite" aria-atomic="true" aria-label="Anuncios de la tienda">
         <div class="announcement-slider">
             <div class="announcement-slide active">✨ ¡NUEVA COLECCIÓN DE TEMPORADA! ✨</div>
             <div class="announcement-slide">🚚 ¡ENVIOS A TODO EL PAÍS! 🚚</div>
@@ -30,7 +35,7 @@
         </div>
     </div>
 
-    <div class="video-container main-content">
+    <div class="video-container main-content" aria-hidden="true">
         <video autoplay height="720" loop muted width="1280" id="hero-video" preload="none">
             <source data-src="assets/video/ropa2.mp4" type="video/mp4">
         </video>
@@ -38,12 +43,13 @@
     <div class="row full-height middle-xs center-xs relative up main-content" id="home">
         <div class="col-xs-12">
             <div class="box white-text">
-                <img class="logo" src="assets/img/logo/LogoNuevo.png" width="300" height="120" fetchpriority="low" decoding="async">
+                <img class="logo" src="assets/img/logo/LogoNuevo.png" width="400" height="267"
+                     alt="Alana Indumentaria — Logo oficial" fetchpriority="low" decoding="async">
                 <h1 class="dancing-script title no-margin">Alana Indumentaria</h1>
-
             </div>
         </div>
-        <nav class="fixed" id="navigation">
+        <!-- Menú fijo superior -->
+        <nav class="fixed" id="navigation" aria-label="Navegación principal">
         </nav>
         <div class="absolute black large-padding white-text full-width" id="description">
             <div class="row middle-xs center-xs">
@@ -51,38 +57,50 @@
                     Vestite bien con nosotros
                 </div>
                 <div class="col-xs-10 col-sm-4">
-                    <div class="search-wrapper">
-                        <input id="product-search" placeholder="¿Qué estás buscando?" type="text">
-                        <button id="search-btn" type="button">
-                            <i class="bi bi-search"></i>
-                        </button>
-                    </div>
+                    <!-- Buscador con roles de accesibilidad -->
+                    <search>
+                        <div class="search-wrapper" role="search">
+                            <label for="product-search" class="sr-only">Buscar productos</label>
+                            <input id="product-search" placeholder="¿Qué estás buscando?"
+                                   type="search" autocomplete="off"
+                                   aria-label="Buscar productos en el catálogo">
+                            <button id="search-btn" type="button" aria-label="Ejecutar búsqueda">
+                                <i class="bi bi-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </search>
                 </div>
                 <div class="col-xs-2 col-sm-4 text-right">
                     <div class="box">
-                        <nav class="text-right navigation" id="sticky-nav">
-                            <i class="bi bi-list white-text subtitle" id="menu-opener"></i>
-                            <ul class="list-inline">
-                                <li>
-                                    <a class="white-text" href="javascript:void(0)" id="cart-icon">
-                                        <i class="bi bi-cart"></i>
-                                        <span id="cart-count">0</span>
+                        <nav class="text-right navigation" id="sticky-nav" aria-label="Menú de acceso rápido">
+                            <button id="menu-opener" type="button"
+                                    aria-label="Abrir menú de navegación"
+                                    aria-expanded="false"
+                                    aria-controls="responsive-nav">
+                                <i class="bi bi-list white-text subtitle" aria-hidden="true"></i>
+                            </button>
+                            <ul class="list-inline" role="menubar">
+                                <li role="none">
+                                    <a class="white-text" href="javascript:void(0)" id="cart-icon"
+                                       role="button" aria-label="Ver carrito (0 productos)">
+                                        <i class="bi bi-cart" aria-hidden="true"></i>
+                                        <span id="cart-count" aria-live="polite" aria-atomic="true">0</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a class="menu-link white-text" href="#home">Home</a>
+                                <li role="none">
+                                    <a class="menu-link white-text" href="#home" role="menuitem">Home</a>
                                 </li>
-                                <li>
-                                    <a class="menu-link white-text" href="#menu">Productos</a>
+                                <li role="none">
+                                    <a class="menu-link white-text" href="#menu" role="menuitem">Productos</a>
                                 </li>
-                                <li>
-                                    <a class="menu-link white-text" href="#gallery">Galeria</a>
+                                <li role="none">
+                                    <a class="menu-link white-text" href="#gallery" role="menuitem">Galería</a>
                                 </li>
-                                <li>
-                                    <a class="menu-link white-text" href="#contact">Contacto</a>
+                                <li role="none">
+                                    <a class="menu-link white-text" href="#contact" role="menuitem">Contacto</a>
                                 </li>
-                                <li>
-                                    <a class="menu-link white-text" href="#map-container">Como llegar</a>
+                                <li role="none">
+                                    <a class="menu-link white-text" href="#map-container" role="menuitem">Cómo llegar</a>
                                 </li>
                             </ul>
                         </nav>
@@ -91,80 +109,89 @@
             </div>
         </div>
     </div>
-    <div class="text-center relative main-content reveal" id="menu">
+
+    <!-- SECCIÓN PRODUCTOS -->
+    <main id="menu" class="text-center relative main-content reveal">
         <div class="white" id="menu-title">
             <h2 class="dancing-script title">Productos</h2>
         </div>
 
         <!-- Etiquetas de Género -->
-        <div class="row center-xs gender-tags-container">
-            <a class="category-link gender-tag" href="#seccion-mujer">MUJER</a>
-            <a class="category-link gender-tag" href="#seccion-hombre">HOMBRE</a>
-        </div>
+        <nav class="row center-xs gender-tags-container" aria-label="Filtrar por género">
+            <a class="category-link gender-tag" href="#seccion-mujer" aria-label="Ver productos de mujer">MUJER</a>
+            <a class="category-link gender-tag" href="#seccion-hombre" aria-label="Ver productos de hombre">HOMBRE</a>
+        </nav>
 
         <!-- Filtros Rápidos de Catálogo -->
-        <div class="row center-xs catalog-tags-container">
-            <button class="catalog-tag active" data-filter="all">TODOS</button>
-            <button class="catalog-tag" data-filter="nuevo">NOVEDADES</button>
-            <button class="catalog-tag" data-filter="oferta">OFERTAS</button>
-            <button class="catalog-tag" data-filter="destacado">DESTACADOS</button>
+        <div class="row center-xs catalog-tags-container" role="group" aria-label="Filtrar por tipo de producto">
+            <button class="catalog-tag active" data-filter="all" aria-pressed="true">TODOS</button>
+            <button class="catalog-tag" data-filter="nuevo" aria-pressed="false">NOVEDADES</button>
+            <button class="catalog-tag" data-filter="oferta" aria-pressed="false">OFERTAS</button>
+            <button class="catalog-tag" data-filter="destacado" aria-pressed="false">DESTACADOS</button>
         </div>
 
-        <!-- Grilla Original de Productos -->
-        <div class="row" id="categories-grid">
-            <!-- Cargado dinámicamente -->
+        <!-- Grilla de productos / categorías (cargada dinámicamente) -->
+        <div class="row" id="categories-grid" aria-live="polite" aria-busy="true">
+            <!-- Cargado dinámicamente por main.js -->
         </div>
-    </div>
+    </main>
 
-    <!-- SECCION MUJER -->
-    <div class="producto-seccion reveal" id="seccion-mujer">
+    <!-- SECCIÓN MUJER -->
+    <section class="producto-seccion reveal" id="seccion-mujer" aria-label="Productos para mujer">
         <div class="row center-xs large-padding">
-            <button class="volver btn">Volver a Productos</button>
+            <button class="volver btn" type="button" aria-label="Volver a la sección de Productos">Volver a Productos</button>
         </div>
         <h2 class="dancing-script title">Mujer</h2>
         <div class="row">
             <!-- Cargado dinámicamente -->
         </div>
-    </div>
+    </section>
 
-    <!-- SECCION HOMBRE -->
-    <div class="producto-seccion reveal" id="seccion-hombre">
+    <!-- SECCIÓN HOMBRE -->
+    <section class="producto-seccion reveal" id="seccion-hombre" aria-label="Productos para hombre">
         <div class="row center-xs large-padding">
-            <button class="volver btn">Volver a Productos</button>
+            <button class="volver btn" type="button" aria-label="Volver a la sección de Productos">Volver a Productos</button>
         </div>
         <h2 class="dancing-script title">Hombre</h2>
         <div class="row">
             <!-- Cargado dinámicamente -->
         </div>
-    </div>
-    <div class="producto-seccion" id="search-results">
+    </section>
+
+    <!-- RESULTADOS DE BÚSQUEDA -->
+    <section class="producto-seccion" id="search-results" aria-label="Resultados de búsqueda">
         <div class="row center-xs large-padding">
-            <button class="volver btn">Volver a Productos</button>
+            <button class="volver btn" type="button" aria-label="Volver a la sección de Productos">Volver a Productos</button>
         </div>
         <h2 class="dancing-script title">Resultados de búsqueda</h2>
-        <div class="row" id="search-results-container">
+        <div class="row" id="search-results-container" aria-live="polite">
             <!-- Aquí se mostrarán los productos filtrados -->
         </div>
-        <div class="no-results hidden">
+        <div class="no-results hidden" role="alert">
             <p class="medium">No se encontraron productos que coincidan con tu búsqueda.</p>
         </div>
-    </div>
+    </section>
+
     <div class="main-content" id="carrito"></div>
-    <div class="main-content relative reveal" id="gallery">
-        <button class="carousel-arrow prev" id="prev-gallery">
-            <i class="bi bi-chevron-left"></i>
+
+    <!-- GALERÍA -->
+    <section class="main-content relative reveal" id="gallery"
+             role="region" aria-label="Galería de fotos de productos">
+        <button class="carousel-arrow prev" id="prev-gallery" type="button" aria-label="Foto anterior">
+            <i class="bi bi-chevron-left" aria-hidden="true"></i>
         </button>
-        <button class="carousel-arrow next" id="next-gallery">
-            <i class="bi bi-chevron-right"></i>
+        <button class="carousel-arrow next" id="next-gallery" type="button" aria-label="Foto siguiente">
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
         </button>
-        <div class="inner">
+        <div class="inner" role="list" aria-label="Imágenes de productos">
             <!-- Cargado dinámicamente -->
         </div>
-    </div>
-    </div>
+    </section>
+
     <div id="product-sections-container">
-        <!-- Todas las secciones de productos se cargarán aquí dinámicamente -->
+        <!-- Secciones de productos cargadas dinámicamente -->
     </div>
+
     <div class="container main-content">
         <div class="white-text black-text text-center relative">
             <h3 class="medium slim">
@@ -174,87 +201,111 @@
         </div>
     </div>
 
-    <!-- SECCION DESTACADOS (SLIDER DE PRODUCTOS DESTACADOS) -->
-    <div class="main-content reveal text-center large-padding" id="seccion-destacados-home">
+    <!-- SECCIÓN DESTACADOS -->
+    <section class="main-content reveal text-center large-padding" id="seccion-destacados-home"
+             aria-label="Productos destacados de la temporada">
         <h2 class="dancing-script title">Productos Destacados</h2>
-        <div class="row center-xs" id="featured-products-container" style="margin: 0 10px 20px 10px;">
+        <div class="row center-xs" id="featured-products-container"
+             style="margin: 0 10px 20px 10px;" aria-live="polite">
             <!-- Cargado dinámicamente -->
         </div>
-    </div>
+    </section>
 
-    <div class="black main-content footer reveal" id="contact">
+    <!-- FOOTER / CONTACTO -->
+    <footer class="black main-content footer reveal" id="contact" aria-label="Contacto y ubicación">
         <div class="row center-xs">
             <div class="col-xs-12">
-                <h3 class="dancing-script white-text subtitle">Contactanos</h3>
+                <h2 class="dancing-script white-text subtitle">Contactanos</h2>
             </div>
         </div>
         <div class="row middle-xs contact-list large-padding">
-            <div class="col-xs-12 col-sm-6 contact-info-col">
+            <address class="col-xs-12 col-sm-6 contact-info-col">
                 <div class="contact-item">
-                    <i class="bi bi-telephone white-text medium"></i>
-                    <a class="white-text medium social-link" href="https://wa.me/5492215426591"
-                        target="_blank">2215426591</a>
+                    <i class="bi bi-telephone white-text medium" aria-hidden="true"></i>
+                    <a class="white-text medium social-link"
+                       href="https://wa.me/5492215426591"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Contactar por WhatsApp al 2215426591">2215426591</a>
                 </div>
                 <div class="contact-item">
-                    <i class="bi bi-geo-alt white-text medium"></i>
+                    <i class="bi bi-geo-alt white-text medium" aria-hidden="true"></i>
                     <p class="white-text medium">La Plata, Buenos Aires</p>
                 </div>
                 <div class="contact-item">
-                    <i class="bi bi-instagram white-text medium"></i>
-                    <a class="white-text medium social-link" href="https://instagram.com/alana.indumentaria.1"
-                        target="_blank">alana.indumentaria.1</a>
+                    <i class="bi bi-instagram white-text medium" aria-hidden="true"></i>
+                    <a class="white-text medium social-link"
+                       href="https://instagram.com/alana.indumentaria.1"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Seguinos en Instagram @alana.indumentaria.1">alana.indumentaria.1</a>
                 </div>
-            </div>
+            </address>
             <div class="col-xs-12 col-sm-6">
                 <div id="map-container">
-                    <div id="map"></div>
-                    <div class="text-center white-text" id="message"></div>
+                    <div id="map" role="img" aria-label="Mapa con la ubicación de Alana Indumentaria en La Plata"></div>
+                    <div class="text-center white-text" id="message" aria-live="polite"></div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="hidden" id="product-modal">
-        <div class="modal-overlay" id="close-overlay"></div>
+    </footer>
+
+    <!-- MODAL DE PRODUCTO -->
+    <div id="product-modal" class="hidden"
+         role="dialog" aria-modal="true"
+         aria-labelledby="modal-product-name"
+         aria-describedby="modal-product-desc">
+        <div class="modal-overlay" id="close-overlay" aria-hidden="true"></div>
         <div class="modal-content">
-            <button class="close-btn" id="close-modal">&times;</button>
+            <button class="close-btn" id="close-modal" type="button" aria-label="Cerrar detalle del producto">&times;</button>
             <div class="modal-body">
                 <div class="modal-image-container">
-                    <img id="modal-img" src="">
+                    <img id="modal-img" src="" alt="" aria-hidden="true">
                 </div>
                 <div class="modal-info">
-                    <h3 class="dancing-script subtitle">Alana Indumentaria</h3>
-                    <p class="medium">Prenda exclusiva de temporada. Excelente calidad y calce perfecto.</p>
-                    <a class="btn black white-text" href="javascript:void(0)" id="add-to-cart-btn">Añadir al Carrito</a>
+                    <h3 class="dancing-script subtitle" id="modal-product-name">Alana Indumentaria</h3>
+                    <p class="medium" id="modal-product-desc">Prenda exclusiva de temporada. Excelente calidad y calce perfecto.</p>
+                    <a class="btn black white-text" href="javascript:void(0)"
+                       id="add-to-cart-btn" role="button">Añadir al Carrito</a>
                     <a class="btn black white-text"
-                        href="https://wa.me/5492215426591?text=Hola!%20Me%20interesa%20esta%20prenda%20que%20vi%20en%20la%20galer%C3%ADa."
-                        id="buy-btn" target="_blank">Consultar</a>
+                       href="https://wa.me/5492215426591?text=Hola!%20Me%20interesa%20esta%20prenda%20que%20vi%20en%20la%20galer%C3%ADa."
+                       id="buy-btn" target="_blank" rel="noopener noreferrer"
+                       aria-label="Consultar por esta prenda vía WhatsApp">Consultar</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- SIDEBAR DEL CARRITO -->
-    <div id="cart-sidebar" class="cart-hidden">
+    <div id="cart-sidebar" class="cart-hidden"
+         role="dialog" aria-modal="true" aria-label="Tu carrito de compras">
         <div class="cart-header">
             <h3 class="dancing-script">Tu Carrito</h3>
-            <button id="close-cart">&times;</button>
+            <button id="close-cart" type="button" aria-label="Cerrar carrito">&times;</button>
         </div>
-        <div id="cart-items-container">
+        <div id="cart-items-container" aria-live="polite" aria-relevant="additions removals">
             <!-- Los productos se cargarán aquí dinámicamente -->
         </div>
         <div class="cart-footer">
-            <div class="cart-total">
+            <div class="cart-total" aria-live="polite">
                 <span>Total:</span>
                 <span id="cart-total-price">$0</span>
             </div>
-            <button id="checkout-btn" class="btn black white-text full-width">Finalizar Pedido por WhatsApp</button>
-            <button id="mp-checkout-btn" class="btn blue white-text full-width" style="margin-top: 10px; background-color: #009ee3;">Pagar con Mercado Pago</button>
+            <button id="checkout-btn" class="btn black white-text full-width"
+                    type="button" aria-label="Finalizar pedido por WhatsApp">
+                Finalizar Pedido por WhatsApp
+            </button>
+            <button id="mp-checkout-btn" class="btn blue white-text full-width"
+                    type="button" aria-label="Pagar con Mercado Pago"
+                    style="margin-top: 10px; background-color: #009ee3;">
+                Pagar con Mercado Pago
+            </button>
         </div>
     </div>
 
-    <!-- BOTON VOLVER ARRIBA -->
-    <button id="back-to-top" class="hidden-btn" title="Volver arriba">
-        <i class="bi bi-chevron-up"></i>
+    <!-- BOTÓN VOLVER ARRIBA -->
+    <button id="back-to-top" class="hidden-btn" type="button" aria-label="Volver al inicio de la página">
+        <i class="bi bi-chevron-up" aria-hidden="true"></i>
     </button>
 
     <script crossorigin="anonymous" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>

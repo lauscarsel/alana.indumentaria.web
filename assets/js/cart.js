@@ -19,6 +19,8 @@
         // Actualizar contador
         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
         cartCountBadge.text(totalItems);
+        // Accesibilidad: actualizar aria-label del ícono del carrito
+        $('#cart-icon').attr('aria-label', `Ver carrito (${totalItems} producto${totalItems !== 1 ? 's' : ''})`);
 
         // Limpiar contenedor
         cartItemsContainer.empty();
@@ -33,18 +35,25 @@
                 total += itemPrice * item.quantity;
 
                 const itemHTML = `
-                    <div class="cart-item">
+                    <div class="cart-item" role="listitem">
                         <img src="${item.image}" alt="${item.title}">
                         <div class="item-details">
                             <h4>${item.title}</h4>
                             <p>${item.price}</p>
-                            <div class="quantity-controls">
-                                <button class="qty-btn minus" data-index="${index}"><i class="bi bi-dash"></i></button>
-                                <span>${item.quantity}</span>
-                                <button class="qty-btn plus" data-index="${index}"><i class="bi bi-plus"></i></button>
+                            <div class="quantity-controls" role="group" aria-label="Cantidad de ${item.title}">
+                                <button class="qty-btn minus" data-index="${index}"
+                                        aria-label="Disminuir cantidad de ${item.title}">
+                                    <i class="bi bi-dash" aria-hidden="true"></i>
+                                </button>
+                                <span aria-live="polite">${item.quantity}</span>
+                                <button class="qty-btn plus" data-index="${index}"
+                                        aria-label="Aumentar cantidad de ${item.title}">
+                                    <i class="bi bi-plus" aria-hidden="true"></i>
+                                </button>
                             </div>
                         </div>
-                        <button class="remove-item" data-index="${index}">&times;</button>
+                        <button class="remove-item" data-index="${index}"
+                                aria-label="Eliminar ${item.title} del carrito">&times;</button>
                     </div>
                 `;
                 cartItemsContainer.append(itemHTML);
@@ -60,10 +69,24 @@
     // Abrir/Cerrar Carrito
     $('#cart-icon').on('click', function() {
         cartSidebar.removeClass('cart-hidden').addClass('cart-visible');
+        // Accesibilidad: mover el foco al botón de cierre
+        setTimeout(function() {
+            document.getElementById('close-cart').focus();
+        }, 50);
     });
 
     $('#close-cart').on('click', function() {
         cartSidebar.removeClass('cart-visible').addClass('cart-hidden');
+        // Devolver foco al ícono del carrito
+        document.getElementById('cart-icon').focus();
+    });
+
+    // Cerrar carrito con tecla Escape
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' && cartSidebar.hasClass('cart-visible')) {
+            cartSidebar.removeClass('cart-visible').addClass('cart-hidden');
+            document.getElementById('cart-icon').focus();
+        }
     });
 
     // Añadir al Carrito (desde el modal)

@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+/* ============================================================
+   BASE — Variables globales, reset mínimo, tipografía base
+   ============================================================ */
+
+:root {
+  --accent-color: #c89d9c;
+  --accent-hover: #b48a89;
+  --accent-light: #f7eded;
+}
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+html,
+body {
+  height: 100dvh;
+  background-color: #f8f9fa;
+  color: #222;
+  transition: background-color 0.5s ease;
+}
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ============================================================
+   ACCESIBILIDAD — Foco visible bonito (no el browser default)
+   ============================================================ */
+
+:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Ocultar visualmente pero mantener para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

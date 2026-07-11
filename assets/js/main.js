@@ -319,12 +319,16 @@ if ('serviceWorker' in navigator) {
   // =========================
 
   $("#menu-opener").on("click", function () {
-    $(".navigation ul").toggleClass("active")
-  })
+    $(".navigation ul").toggleClass("active");
+    // Accesibilidad: actualizar aria-expanded
+    const expanded = $(".navigation ul").hasClass("active");
+    $(this).attr("aria-expanded", expanded ? "true" : "false");
+  });
 
   $(document).on("click", ".menu-link", function () {
-    $(".navigation ul").removeClass("active")
-  })
+    $(".navigation ul").removeClass("active");
+    $("#menu-opener").attr("aria-expanded", "false");
+  });
 
   // =========================
   // CARRUSEL AUTOMÁTICO Y MANUAL
@@ -358,27 +362,56 @@ if ('serviceWorker' in navigator) {
   // MODAL DE PRODUCTO (GALERÍA)
   // =========================
 
+  let lastFocusedElement = null;
+
+  function openModal() {
+    $("#product-modal").removeClass("hidden");
+    $("#product-modal").attr("aria-hidden", "false");
+    // Mover el foco al botón de cierre para lectores de pantalla
+    setTimeout(function() {
+      document.getElementById("close-modal").focus();
+    }, 50);
+  }
+
+  function closeModal() {
+    $("#product-modal").addClass("hidden");
+    $("#product-modal").attr("aria-hidden", "true");
+    // Devolver el foco al elemento que abrió el modal
+    if (lastFocusedElement) {
+      lastFocusedElement.focus();
+      lastFocusedElement = null;
+    }
+  }
+
   $(document).on("click", "#gallery .image", function () {
-    const bg = $(this).css("background-image")
-    const url = bg.replace('url("', '').replace('")', '')
+    lastFocusedElement = this;
+    const bg = $(this).css("background-image");
+    const url = bg.replace('url("', '').replace('")', '');
 
-    const titulo = $(this).attr("data-titulo") || "Alana Indumentaria"
-    const precio = $(this).attr("data-precio") || "Consultar"
-    const talles = $(this).attr("data-talles") || "Consultar"
+    const titulo = $(this).attr("data-titulo") || "Alana Indumentaria";
+    const precio = $(this).attr("data-precio") || "Consultar";
+    const talles = $(this).attr("data-talles") || "Consultar";
 
-    $("#modal-img").attr("src", url)
-    $("#product-modal .modal-info h3").text(titulo)
-    $("#product-modal .modal-info p").html("<strong>Precio:</strong> " + precio + "<br><br><strong>Talles:</strong> " + talles)
-    
-    const waLink = "https://wa.me/5492215426591?text=Hola!%20Me%20interesa%20la%20prenda%20" + encodeURIComponent(titulo) + "%20que%20vi%20en%20la%20galería."
-    $("#buy-btn").attr("href", waLink)
+    $("#modal-img").attr("src", url).attr("alt", titulo);
+    $("#modal-product-name").text(titulo);
+    $("#modal-product-desc").html("<strong>Precio:</strong> " + precio + "<br><br><strong>Talles:</strong> " + talles);
 
-    $("#product-modal").removeClass("hidden")
-  })
+    const waLink = "https://wa.me/5492215426591?text=Hola!%20Me%20interesa%20la%20prenda%20" + encodeURIComponent(titulo) + "%20que%20vi%20en%20la%20galería.";
+    $("#buy-btn").attr("href", waLink);
+
+    openModal();
+  });
 
   $("#close-modal, #close-overlay").on("click", function () {
-    $("#product-modal").addClass("hidden")
-  })
+    closeModal();
+  });
+
+  // Cerrar modal con tecla Escape
+  $(document).on("keydown", function(e) {
+    if (e.key === "Escape" && !$("#product-modal").hasClass("hidden")) {
+      closeModal();
+    }
+  });
 
 
   // =========================
